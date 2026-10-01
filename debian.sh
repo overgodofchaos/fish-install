@@ -1,6 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
-set -eu
+if [ -z "$BASH_VERSION" ] && [ -z "$ZSH_VERSION" ]; then
+    echo "ERROR: bash/zsh required" >&2
+    exit 1
+fi
+
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
